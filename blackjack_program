@@ -1,0 +1,89 @@
+
+# coding: utf-8
+
+# #Milestone Project 2 - Blackjack Game
+# In this milestone project you will be creating a Complete BlackJack Card Game in Python.
+# 
+# Here are the requirements:
+# 
+# * You need to create a simple text-based [BlackJack](https://en.wikipedia.org/wiki/Blackjack) game
+# * The game needs to have one player versus an automated dealer.
+# * The player can stand or hit.
+# * The player must be able to pick their betting amount.
+# * You need to keep track of the players total money.
+# * You need to alert the player of wins, losses, or busts, etc...
+# 
+# And most importantly:
+# 
+# * **You must use OOP and classes in some portion of your game. You can not just use functions in your game. Use classes to help you define the Deck and the Player's hand. There are many right ways to do this, so explore it well!**
+# 
+# 
+# Feel free to expand this game-try including multiple players. Try adding in Double-Down and card splits! Remember to you are free to use any resources you want and as always:
+# 
+# # HAVE FUN!
+
+# The Blackjack rules and conditions are:
+# - Ther are basically two participants, the Player (P) and the Dealer (D)
+# - Every one had a hand of at least two cards, that should sum less than 21, if more it burst (strongly conditioning to lost)
+# - The player can hit (recieve another card) or stand (stop ading cards)
+# - The dealer always should accept cards until it gets 17 or more
+# - the ace could value 1 or 11.
+# - Ending conditions: 
+#   - to be under 21 and the other burst
+#   - to be under 21, but closer than the other to 21
+#   - to get 21 while the other not
+#   - if they both have the same sum, ii is called "push"
+
+# Steps:
+#     - To make a collections of cards in the four suits.
+#         -Make the card picker, that choose aleatory a card taking it out of the future possible outputs.
+#     - Make the dealer evaluator, that will say of the dealer can go on, or keep stand
+#     - Make the Game Evaluator to know if the game is over, and who won, or if they push.
+#     - Make the whole algorithm
+
+# Deck for the game
+
+# In[76]:
+
+# make the card's deck, now it's done
+
+deck={}
+suit=('hearts','tiles','clovers','pikes')
+val=(1,2,3,4,5,6,7,8,9,10,10,10,10)
+num=0;
+for i in range(4):
+      for j in range(13):
+            deck.update({num:(val[j],suit[i])})
+            num+=1
+
+
+# Card picker functions. Take a card from the deck and it not available again in the same game.
+# Should be done something if there are more than 52 hots, because the function will run unstoped
+
+# In[91]:
+
+import random
+
+#this list should be made in the beggining of every game, 
+#and keeped till the end
+ava_list=[]
+for i in range(52):
+    ava_list.append(i)
+
+# This function allows to pick a card, leaving the desk without her
+#should be careful with the list, to ensure it isn't changed and 
+#not renewed while playing
+
+def card_picker(lst):
+    while True:
+        guess=random.randint(0,51)
+        if guess in lst:
+            lst[guess]=None
+            break
+    return deck[guess][0]
+
+
+# Let's make the deck as a class. That shoul make more sense for the exercise
+
+# In[ ]:
+
