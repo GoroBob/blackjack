@@ -1,2 +1,2 @@
 # blackjack
-Milestone project of the UDEMY curse Python: from zero to hero
+Programming the deck game for the sake of practizing classes and Object Oriented Programming
